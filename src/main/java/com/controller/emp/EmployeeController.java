@@ -73,21 +73,21 @@ public class EmployeeController {
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
         try {
-            // Validar que el empleado exista
+
             Employee employee = employeeService.getEmployeeById(employeeId);
             if (employee == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found");
             }
 
-            // Validar que la fecha de inicio sea menor a la fecha de fin
+
             if (startDate.isAfter(endDate)) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid date range");
             }
 
-            // Consultar los pagos al empleado en el rango de fechas
+
             List<Payment> payments = paymentService.getPaymentsByEmployeeAndDateRange(employeeId, startDate, endDate);
 
-            // Devolver los pagos como respuesta
+
             return ResponseEntity.ok(payments);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing request");

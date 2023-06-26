@@ -1,13 +1,14 @@
 package com.dto.emp;
 
-public class GenderDTO {
+public class JobDTO {
+
     private Long id;
     private String name;
 
-    public GenderDTO() {
+    public JobDTO() {
     }
 
-    public GenderDTO(Long id, String name) {
+    public JobDTO(Long id, String name) {
         this.id = id;
         this.name = name;
     }

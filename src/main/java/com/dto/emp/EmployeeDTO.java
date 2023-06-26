@@ -48,5 +48,5 @@ public class EmployeeDTO {
         this.jobId = jobId;
     }
 
-    // Getters and setters
+
 }
